@@ -1,6 +1,6 @@
 create database database01;
 show databases;
-8
+
 drop database database01;
 use database1;
 create table stud(
@@ -255,7 +255,6 @@ select c.customerNumber,c.contactFirstName,c.contactFirstName,c.creditLimit,
 o.status,o.orderDate
 from customers as c right join orders as o
 on c.customerNumber = o.customerNumber; 
-
 --  FULL OUTER JOIN
 select c.customerNumber,c.contactFirstName,c.contactFirstName,c.creditLimit,
 o.status,o.orderDate
@@ -279,4 +278,16 @@ on c.customerNumber = o.customerNumber
 where o.status='cancelled'
 order by c.creditlimit desc
 limit 3;
+
+SELECT 
+    employeeNumber,
+    firstname,
+    officeCode,
+    ROW_NUMBER() OVER 
+    (PARTITION BY officeCode ORDER BY employeeNumber desc) 
+    AS row_num
+FROM 
+    employees;
+    
+
 
